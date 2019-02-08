@@ -10,18 +10,22 @@
     <!-- :disable-route-watcher="$vuetify.breakpoint.smAndUp" -->
     <v-navigation-drawer v-if="user" app fixed clipped v-model="drawer" temporary>
       <v-list>
-        <v-list-tile
-          v-for="(item, i) in leftBarItems"
-          v-if="user.hasRoles(item.allowed)"
-          :key="i"
-          :to="item.url"
-        >
+        <v-list-tile v-for="(item, i) in leftBarItems" :key="i" :to="item.url">
           <!-- v-if="!item.allowed || user.hasRoles(item.allowed)" -->
           <v-list-tile-action>
             <v-icon v-html="item.icon"></v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title v-text="item.title"></v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile v-if="user.hasRoles(['manager'])" to="/person/create">
+          <v-list-tile-action>
+            <v-icon>add_circle</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Создать</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
@@ -96,13 +100,7 @@ export default {
       drawer: false,
       leftBarItems: [
         { icon: "supervisor_account", title: "Рода", url: "/rod/all" },
-        { icon: "search", title: "Поиск", url: "/person/find" },
-        {
-          icon: "add_circle",
-          title: "Создать",
-          url: "/person/create",
-          allowed: ["manager"]
-        }
+        { icon: "search", title: "Поиск", url: "/person/find" }
       ]
     };
   },

@@ -19,68 +19,7 @@ import {
   rodName
 } from '@/filters'
 
-// import {
-//   Vuetify,
-//   VApp,
-//   VNavigationDrawer,
-//   VFooter,
-//   VList,
-//   VDivider,
-//   VBtn,
-//   VIcon,
-//   VGrid,
-//   VToolbar,
-//   VTextField,
-//   VSelect,
-//   VRadioGroup,
-//   VSwitch,
-//   VCheckbox,
-//   VAlert,
-//   VAvatar,
-//   transitions,
-//   VDialog,
-//   VCard,
-//   VProgressCircular,
-//   VSubheader,
-//   VForm
-// } from 'vuetify'
-
 Vue.use(Croppa)
-
-// Vue.use(Vuetify, {
-//   components: {
-//     VApp,
-//     VNavigationDrawer,
-//     VFooter,
-//     VList,
-//     VDivider,
-//     VBtn,
-//     VIcon,
-//     VGrid,
-//     VToolbar,
-//     VTextField,
-//     VSelect,
-//     VRadioGroup,
-//     VSwitch,
-//     VCheckbox,
-//     VAlert,
-//     VAvatar,
-//     transitions,
-//     VDialog,
-//     VCard,
-//     VProgressCircular,
-//     VSubheader,
-//     VForm,
-//     ImageUploadCroppa
-//   },
-//   theme: {
-//     primary: '#2b7ce9', //'#3f51b5'
-//     secondary: '#b0bec5',
-//     accent: '#8c9eff',
-//     error: '#b71c1c',
-//     // success: '#147A4A'
-//   }
-// })
 
 Vue.component('app-alert', Alert)
 Vue.component('persons-list', PersonsList)
