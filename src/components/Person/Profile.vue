@@ -34,7 +34,7 @@
         </div>
         <br>
         <div v-if="person.editable">
-          <v-btn flat outline small @click.prevent="deletePerson">Удалить</v-btn>
+          <v-btn flat outline small @click.stop="deletePerson">Удалить</v-btn>
           <!-- todo: скрыть в подменю -->
           <v-btn small color="accent" @click.stop="editDialog=true">Изменить</v-btn>
         </div>
@@ -168,7 +168,6 @@ export default {
         axiosInst
           .delete(`/api/person/${this.person._key}`)
           .then(resp => {
-            this.$store.commit("setPerson", null);
             this.$router.push("/tree/" + resp.data.redirKey); // переход на единственного rel (либо на user)
           })
           .catch(error => {
