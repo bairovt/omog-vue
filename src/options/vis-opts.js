@@ -1,7 +1,7 @@
-const menColor = '#2b7ce9'
-const womenColor = '#aa00ff'
+export const menColor = '#2b7ce9'
+export const womenColor = '#aa00ff'
 
-const visOptions = {
+export const visOptions = {
   locale: 'ru',
   layout: {
     // improvedLayout: false,
@@ -65,9 +65,3 @@ const visOptions = {
     tooltipDelay: 100 // 300 ms default
   }
 };
-
-module.exports = {
-  visOptions,
-  menColor,
-  womenColor
-}
