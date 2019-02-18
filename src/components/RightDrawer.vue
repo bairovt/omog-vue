@@ -60,7 +60,7 @@
       <!-- <p>{{person.lifestory}}</p> -->
       <v-flex class="mt-2 mb-2">
         <span>Добавил(а):</span>
-        <v-btn round small :to="`/tree/${person.addedBy._key}`">
+        <v-btn v-if="person.addedBy" round small :to="`/tree/${person.addedBy._key}`">
           {{person.addedBy.name}}
           {{person.addedBy.surname}}
         </v-btn>

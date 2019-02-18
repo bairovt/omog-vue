@@ -27,7 +27,7 @@
         </div>
         <div class="pt-2 pb-2">
           <span>Добавил(а):</span>
-          <v-btn round small :to="`/tree/${person.addedBy._key}`">
+          <v-btn v-if="person.addedBy" round small :to="`/tree/${person.addedBy._key}`">
             {{person.addedBy.name}}
             {{person.addedBy.surname}}
           </v-btn>
