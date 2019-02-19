@@ -46,7 +46,7 @@
               @click.stop="inviteDialog=true"
             >
               <!--<v-btn small @click.stop="inviteDialog=true">-->
-              Пригластиь
+              Пригласить
             </v-btn>
             <span v-else></span>
           </span>
