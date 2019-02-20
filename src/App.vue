@@ -42,7 +42,7 @@
 
     <right-drawer v-if="user"></right-drawer>
 
-    <v-toolbar app fixed clipped-right clipped-left dense>
+    <v-toolbar v-if="user" app fixed clipped-right clipped-left dense>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
 
       <v-toolbar-items>
