@@ -52,7 +52,12 @@
         <div>дев. фамилия: {{person.maidenName}}</div>
       </v-flex>
       <v-flex v-if="person.rod" class="mb-2">Род:
-        <v-btn small round :to="`/rod/${person.rod._key}`">{{person.rod.name}}</v-btn>
+        <v-btn
+          small
+          round
+          :to="`/rod/${person.rod._key}`"
+          class="text-capitalize"
+        >{{person.rod.name}}</v-btn>
       </v-flex>
 
       <v-flex class="mb-2">{{person.info}}</v-flex>
@@ -60,7 +65,13 @@
       <!-- <p>{{person.lifestory}}</p> -->
       <v-flex class="mt-2 mb-2">
         <span>Добавил(а):</span>
-        <v-btn v-if="person.addedBy" round small :to="`/tree/${person.addedBy._key}`">
+        <v-btn
+          v-if="person.addedBy"
+          round
+          small
+          :to="`/tree/${person.addedBy._key}`"
+          class="text-capitalize"
+        >
           {{person.addedBy.name}}
           {{person.addedBy.surname}}
         </v-btn>

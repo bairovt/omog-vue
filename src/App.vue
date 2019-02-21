@@ -48,7 +48,7 @@
       <v-toolbar-items>
         <v-btn v-if="user" flat :to="`/tree/${user._key}`">
           <img class="menu-tree-icon" src="/assets/tree-icon.png">
-          <span class="hidden-xs-only menu-title">Мой Род</span>
+          <span class="hidden-xs-only menu-title text-capitalize">Мой Род</span>
         </v-btn>
       </v-toolbar-items>
 
@@ -56,11 +56,11 @@
       <v-toolbar-items>
         <v-btn flat v-if="user" to="/person/find" class="hidden-xs-only">
           <v-icon>search</v-icon>
-          <span class="menu-title">Поиск</span>
+          <span class="menu-title text-lowercase">поиск</span>
         </v-btn>
         <v-btn flat v-if="person._key" :to="`/profile/${person._key}`">
           <v-icon>face</v-icon>
-          <span class="hidden-xs-only menu-title">{{person.name}}</span>
+          <span class="hidden-xs-only menu-title text-capitalize">{{person.name}}</span>
         </v-btn>
       </v-toolbar-items>
       <v-btn v-if="user" icon @click="rightDrawer = !rightDrawer">

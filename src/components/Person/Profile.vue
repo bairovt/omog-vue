@@ -23,11 +23,22 @@
           <v-btn small round color="success" :to="`/tree/${person._key}`">ДРЕВО</v-btn>
         </div>
         <div v-if="person.rod">Род:
-          <v-btn small round :to="`/rod/${person.rod._key}`">{{person.rod.name}}</v-btn>
+          <v-btn
+            small
+            round
+            :to="`/rod/${person.rod._key}`"
+            class="text-capitalize"
+          >{{person.rod.name}}</v-btn>
         </div>
         <div class="pt-2 pb-2">
           <span>Добавил(а):</span>
-          <v-btn v-if="person.addedBy" round small :to="`/tree/${person.addedBy._key}`">
+          <v-btn
+            v-if="person.addedBy"
+            round
+            small
+            :to="`/tree/${person.addedBy._key}`"
+            class="text-capitalize"
+          >
             {{person.addedBy.name}}
             {{person.addedBy.surname}}
           </v-btn>
