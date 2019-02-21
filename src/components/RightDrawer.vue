@@ -43,8 +43,8 @@
           </router-link>
         </div>
         <div>
-          <span v-if="person.born">{{person.born}}</span>
-          <span v-if="person.died">- {{person.died}}</span>
+          <span v-if="person.born">{{person.born}}г</span>
+          <span v-if="person.died">&nbsp;- {{person.died}}г</span>
         </div>
       </v-flex>
 
