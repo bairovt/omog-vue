@@ -7,7 +7,7 @@ export const visOptions = {
     // improvedLayout: false,
     hierarchical: {
       // enabled: false, // def true if any attribute enable
-      // levelSeparation: 200, // def 150
+      levelSeparation: 120, // def 150
       sortMethod: "directed", //"hubsize"
       // parentCentralization: false, // def true
       // edgeMinimization: false, // def true
