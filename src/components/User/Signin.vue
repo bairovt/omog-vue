@@ -9,9 +9,10 @@
 
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
-        <!-- <p class="text-xs-right">
-          <em>Если мы потеряем корни, нас сдует ветром</em>
-        </p>-->
+        <p class="text-xs-right">
+          <!-- <em>Если мы потеряем корни, нас сдует ветром</em> -->
+          <em>История начинается с семьи</em>
+        </p>
         <h2 class="mb-4">Вход</h2>
         <form @submit.prevent="signUserIn">
           <v-text-field
