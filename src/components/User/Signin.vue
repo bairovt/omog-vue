@@ -88,9 +88,9 @@ export default {
 </script>
 
 <style>
-.v-content__wrap {
+/* .v-content__wrap {
   background-image: url(https://cdn.vuetifyjs.com/images/parallax/material.jpg);
   background-size: cover;
-}
+} */
 </style>
 
