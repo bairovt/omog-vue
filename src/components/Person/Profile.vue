@@ -187,6 +187,11 @@ export default {
       }
     },
     updatePerson() {
+      if (this.person.rod instanceof Object) {
+        this.person.rod = this.person.rod._id;
+      } else if (this.person.rod === undefined) {
+        this.person.rod = null;
+      }
       axiosInst
         .post(`/api/person/update/${this.person._key}`, {
           person: this.person

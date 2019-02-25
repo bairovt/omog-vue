@@ -32,6 +32,7 @@
       item-value="_id"
       menu-props="auto"
       chips
+      dense
       clearable
     ></v-autocomplete>
 
@@ -83,6 +84,7 @@ export default {
       for (let rod of this.$store.state.rods) {
         flatRods.push({
           name: rod.name,
+          _key: rod._key,
           _id: rod._id
         });
         for (let subrod of rod.subrods) {
