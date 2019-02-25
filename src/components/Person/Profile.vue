@@ -197,6 +197,7 @@ export default {
           person: this.person
         })
         .then(resp => {
+          this.loadProfile();
           this.editDialog = false;
         })
         .catch(error => {
@@ -219,7 +220,7 @@ export default {
     }
   },
   created() {
-    if (!this.person) this.loadProfile();
+    if (!this.person._key) this.loadProfile();
   }
 };
 </script>
