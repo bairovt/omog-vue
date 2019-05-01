@@ -13,7 +13,7 @@ import PersonsList from './components/Shared/PersonsList.vue'
 import PersonFields from './components/Shared/PersonFields.vue'
 import ImageUploadCroppa from './components/Shared/ImageUploadCroppa.vue'
 import RightDrawer from './components/RightDrawer.vue'
-import RelateDialog from './components/Person/RelateDialog.vue'
+import RelateDialogNew from './components/Person/RelateDialogNew.vue'
 import {
   gender,
   rodName
@@ -26,7 +26,7 @@ Vue.component('persons-list', PersonsList)
 Vue.component('person-fields', PersonFields)
 Vue.component('image-upload-croppa', ImageUploadCroppa)
 Vue.component('right-drawer', RightDrawer)
-Vue.component('relate-dialog', RelateDialog)
+Vue.component('relate-dialog-new', RelateDialogNew)
 
 Vue.filter('rodName', rodName)
 Vue.filter('gender', gender)

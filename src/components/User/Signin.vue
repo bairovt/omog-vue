@@ -76,7 +76,6 @@ export default {
           const { authToken, person_key } = resp.data;
           window.localStorage.setItem("authToken", authToken);
           this.$store.commit("setUser", jwtDecode(authToken)); // user object
-          // запуск подгрузки родов после авторизации user
           this.$store.dispatch("loadAllRods"); //todo? дожидаться ли окончания загрузки родов
           this.$router.push("/tree/" + person_key);
         })

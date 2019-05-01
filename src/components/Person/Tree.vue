@@ -8,10 +8,12 @@
         <div id="rod_tree"></div>
       </v-flex>
     </v-layout>
+    
     <!-- set relation dialog -->
     <v-dialog v-model="relateDialog" max-width="500px">
-      <relate-dialog v-if="personForRel" v-on:related="fetchTree"></relate-dialog>
+      <relate-dialog-new v-on:related="fetchTree"></relate-dialog-new>
     </v-dialog>
+
     <!-- when clicked on edge -->
     <v-dialog v-model="edgeDialog" persistent max-width="500px">
       <v-card v-if="edge">
@@ -77,9 +79,6 @@ export default {
       set(newValue) {
         this.$store.state.relateDialog = newValue;
       }
-    },
-    personForRel() {
-      return this.$store.state.personForRel;
     },
     treeData() {
       const treeData = { nodes: [], edges: [] };

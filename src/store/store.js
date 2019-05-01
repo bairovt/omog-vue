@@ -18,7 +18,10 @@ export const store = new Vuex.Store({
     loading: false,
     error: null,
     rightDrawer: false,
-    personForRel: null,
+    potential: {
+      parents: [],
+      children: [],
+    },
     relateDialog: false,
     rules: {
       required: (v) => !!v || 'Обязательное поле',
@@ -68,8 +71,8 @@ export const store = new Vuex.Store({
     setRightDrawer(state, payload) {
       state.rightDrawer = payload
     },
-    setPersonForRel(state, payload) {
-      state.personForRel = payload
+    setPotential(state, payload) {
+      state.potential = payload;
     },
     setRods(state, payload) {
       state.rods = payload
@@ -168,6 +171,19 @@ export const store = new Vuex.Store({
         .catch(error => {
           dispatch('axiosErrorHandle', error)
         });
-    }
+    },
+    fetchPotentialParentsAndChildren({
+      commit,
+      dispatch
+    }, person_key) {
+      axiosInst
+        .get(`/api/person/${person_key}/potential_parents_and_children`)
+        .then(resp => {
+          commit('setPotential', resp.data.potential);
+        })
+        .catch(error => {
+          dispatch('axiosErrorHandle', error);
+        });
+    },
   }
 })

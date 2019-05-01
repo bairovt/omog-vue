@@ -86,19 +86,10 @@
         <v-btn small color="accent" :to="`/person/${person._key}/add/daughter`">дочь</v-btn>
       </v-flex>
       <br>
-      <v-flex>Соединение персон:
-        <br>
-        <v-btn small @click.stop="pickForRel" :disabled="isPersonPickedForRel">
-          <span v-if="isPersonPickedForRel">Выбран для соединения</span>
-          <span v-else>Выбрать для соединения</span>
+      <v-flex v-if="person.editable">
+        <v-btn round small @click.stop="openRelateDialog()" color="warning">
+          <span>Cоединение!</span>
         </v-btn>
-        <!-- todo: проработать права на указание; v-if="!person.disableRelPropose" -->
-        <v-btn
-          v-if="!isPersonPickedForRel && personForRel"
-          small
-          color="warning"
-          @click.stop="relateDialog=true"
-        >Соединить</v-btn>
       </v-flex>
       <br>
     </v-layout>
@@ -119,29 +110,11 @@ export default {
         this.$store.state.rightDrawer = newValue;
       }
     },
-    relateDialog: {
-      get() {
-        return this.$store.state.relateDialog;
-      },
-      set(newValue) {
-        this.$store.state.relateDialog = newValue;
-      }
-    },
     user() {
       return this.$store.state.user;
     },
     person() {
       return this.$store.state.person;
-    },
-    personForRel() {
-      return this.$store.state.personForRel;
-    },
-    isPersonPickedForRel() {
-      const personForRel = this.$store.state.personForRel;
-      if (personForRel) {
-        return this.person._id === personForRel._id;
-      }
-      return false;
     },
     treeView: {
       get() {
@@ -153,9 +126,13 @@ export default {
     }
   },
   methods: {
-    pickForRel() {
-      this.$store.commit("setPersonForRel", this.person);
-    }
+    openRelateDialog() {
+      this.$store.dispatch(
+        "fetchPotentialParentsAndChildren",
+        this.person._key
+      );
+      this.$store.state.relateDialog = true;
+    },    
   }
 };
 </script>
