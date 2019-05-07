@@ -2,7 +2,12 @@
   <v-container>
     <v-layout row wrap>
       <v-flex class="xs12">
-        <h2>Рода</h2>
+        <h2>
+          Рода
+          <small>
+            <router-link :to="`/rod/graph`">структура</router-link>
+          </small>
+        </h2>
       </v-flex>
       <v-flex class="xs12" v-if="rods.length">
         <!--<h3>-->
