@@ -61,7 +61,7 @@ export default {
     },
     potential() {
       return this.$store.state.potential;
-    },    
+    },
     loading() {
       return this.$store.state.loading;
     },
@@ -69,7 +69,7 @@ export default {
       return this.$store.state.rules;
     }
   },
-  methods: {    
+  methods: {
     relate() {
       axiosInst
         .post("/api/child/set_relation", {
@@ -80,7 +80,7 @@ export default {
           adopted: this.adopted
         })
         .then(resp => {
-          this.$store.commit("setPersonToRelate", null);
+          this.personToRelate = null;
           this.$store.state.relateDialog = false;
           this.$emit("related");
         })
