@@ -51,7 +51,8 @@
       <v-flex class="mb-2" v-if="person.maidenName">
         <div>дев. фамилия: {{person.maidenName}}</div>
       </v-flex>
-      <v-flex v-if="person.rod" class="mb-2">Род:
+      <v-flex v-if="person.rod" class="mb-2">
+        Род:
         <v-btn
           small
           round
@@ -87,8 +88,13 @@
       </v-flex>
       <br>
       <v-flex v-if="person.editable">
-        <v-btn round small @click.stop="openRelateDialog()" color="warning">
-          <span>Cоединение!</span>
+        <v-btn round small @click.stop="openRelateDialog()">
+          <span>Cоединение</span>
+        </v-btn>
+      </v-flex>
+      <v-flex>
+        <v-btn round small class="text-lowercase">
+          <span>Копировать ключ</span>
         </v-btn>
       </v-flex>
       <br>
@@ -132,7 +138,10 @@ export default {
         this.person._key
       );
       this.$store.state.relateDialog = true;
-    },    
+    },
+    copyKey() {
+      this.$store.state.copied_key;
+    }
   }
 };
 </script>

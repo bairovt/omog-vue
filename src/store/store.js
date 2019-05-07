@@ -26,7 +26,8 @@ export const store = new Vuex.Store({
     rules: {
       required: (v) => !!v || 'Обязательное поле',
       email: (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,5})+$/.test(v) || 'E-mail must be valid'
-    }
+    },
+    copied_key: null
   },
   getters: {
     errorDialog(state) {
