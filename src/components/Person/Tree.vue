@@ -8,7 +8,7 @@
         <div id="rod_tree"></div>
       </v-flex>
     </v-layout>
-    
+
     <!-- set relation dialog -->
     <v-dialog v-model="relateDialog" max-width="500px">
       <relate-dialog-new v-on:related="fetchTree"></relate-dialog-new>
@@ -98,25 +98,39 @@ export default {
       const nodesIds = [];
       const edgesIds = [];
 
-      treeData.nodes.push({
-        id: this.person._id,
-        label: surName(this.person),
-        title: surName(this.person),
-        shape: this.person.pic ? "circularImage" : "icon",
-        image: this.person.pic
-          ? "/upload/" + this.person._key + "/" + this.person.pic
-          : undefined,
-        icon: {
-          face: "FontAwesome",
-          code: "\uf2be",
-          size: 50,
-          color: this.person.gender === 0 ? womenColor : menColor
-        },
-        color: { border: this.person.gender === 0 ? womenColor : menColor }, // arrows color
-        borderWidth: 5
-        // group: this.person.gender, // bug: why group settings are prior over the node's?
+      this.tree.partners.map(item => {
+        if (nodesIds.indexOf(item.person._id) === -1) {
+          // добавляем без повторов
+          treeData.nodes.push({
+            id: item.person._id,
+            label: surName(item.person),
+            title: surName(item.person),
+            shape: item.person.pic ? "circularImage" : "icon",
+            image: item.person.pic
+              ? "/upload/" + item.person._key + "/" + item.person.pic
+              : undefined,
+            group: item.person.gender
+          });
+          nodesIds.push(item.person._id);
+        }
+        if (edgesIds.indexOf(item.edge._id) === -1) {
+          // добавляем без повторов
+          treeData.edges.push({
+            id: item.edge._id,
+            from: item.edge._from,
+            to: item.edge._to,
+            addedBy: item.edge.addedBy,
+            adopted: item.edge.adopted,
+            color: {
+              // adopted arrow color
+              color: item.edge.adopted ? "#18bc9c" : undefined,
+              highlight: item.edge.adopted ? "#18bc9c" : undefined,
+              hover: item.edge.adopted ? "#18bc9c" : undefined
+            }
+          });
+          edgesIds.push(item.edge._id);
+        }
       });
-      nodesIds.push(this.person._id);
 
       this.tree.predki.map(item => {
         if (nodesIds.indexOf(item.person._id) === -1) {
@@ -151,6 +165,26 @@ export default {
           edgesIds.push(item.edge._id);
         }
       });
+      // a person
+      treeData.nodes.push({
+        id: this.person._id,
+        label: surName(this.person),
+        title: surName(this.person),
+        shape: this.person.pic ? "circularImage" : "icon",
+        image: this.person.pic
+          ? "/upload/" + this.person._key + "/" + this.person.pic
+          : undefined,
+        icon: {
+          face: "FontAwesome",
+          code: "\uf2be",
+          size: 50,
+          color: this.person.gender === 0 ? womenColor : menColor
+        },
+        color: { border: this.person.gender === 0 ? womenColor : menColor }, // arrows color
+        borderWidth: 5
+        // group: this.person.gender, // bug: why group settings are prior over the node's?
+      });
+      nodesIds.push(this.person._id);
 
       this.tree.siblings.map(item => {
         if (nodesIds.indexOf(item.person._id) === -1) {
