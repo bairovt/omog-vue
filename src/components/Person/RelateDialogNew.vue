@@ -9,9 +9,7 @@
         <v-radio label="родителем" value="parent" color="primary"></v-radio>
         <v-radio label="ребенком" value="child" color="primary"></v-radio>
       </v-radio-group>
-      <!-- <strong
-        v-if="personToRelate"
-      >{{personToRelate.surname}} {{personToRelate.name}} {{personToRelate.midname}}</strong>-->
+
       <v-autocomplete
         :disabled="reltype === null"
         :items="reltype === 'parent' ? potential.parents : potential.children"
@@ -23,13 +21,19 @@
         dense
       ></v-autocomplete>
       <v-checkbox label="приемный/отданный" v-model="adopted" color="primary"></v-checkbox>
+      <v-checkbox
+        v-if="selectedPerson && selectedPerson._id !== person._id"
+        :label="`соединить с: ${$options.filters.fullestName(selectedPerson)}`"
+        v-model="relateWithSelected"
+        color="primary"
+      ></v-checkbox>
     </v-card-text>
 
     <v-card-actions>
       <v-btn
         @click.stop="relate"
         class="primary"
-        :disabled="loading || (reltype === null || personToRelate === null)"
+        :disabled="loading || (reltype === null || (personToRelate === null && !relateWithSelected))"
         :loading="loading"
       >
         Соединить
@@ -45,19 +49,23 @@
 
 <script>
 import axiosInst from "@/utils/axios-instance";
-import { translate } from "@/filters";
+import { translate, fullestName } from "@/filters";
 
 export default {
   data() {
     return {
       reltype: null, // parent, child
       adopted: false,
-      personToRelate: null // _key
+      personToRelate: null, // _key
+      relateWithSelected: false
     };
   },
   computed: {
     person() {
       return this.$store.state.person;
+    },
+    selectedPerson() {
+      return this.$store.state.selectedPerson;
     },
     potential() {
       return this.$store.state.potential;
@@ -71,12 +79,26 @@ export default {
   },
   methods: {
     relate() {
+      let from_key, to_key;
+      if (this.relateWithSelected) {
+        from_key =
+          this.reltype === "child"
+            ? this.person._key
+            : this.selectedPerson._key;
+        to_key =
+          this.reltype === "parent"
+            ? this.person._key
+            : this.selectedPerson._key;
+      } else {
+        from_key =
+          this.reltype === "child" ? this.person._key : this.personToRelate;
+        to_key =
+          this.reltype === "parent" ? this.person._key : this.personToRelate;
+      }
       axiosInst
         .post("/api/child/set_relation", {
-          from_key:
-            this.reltype === "child" ? this.person._key : this.personToRelate,
-          to_key:
-            this.reltype === "parent" ? this.person._key : this.personToRelate,
+          from_key,
+          to_key,
           adopted: this.adopted
         })
         .then(resp => {

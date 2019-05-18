@@ -92,7 +92,17 @@
           <span>Соединить</span>
         </v-btn>
       </v-flex>
-      <br>
+      <v-flex v-if="user._id !== person._id">
+        <v-btn
+          round
+          small
+          @click.stop="selectPerson()"
+          :disabled="selectedPerson && (selectedPerson._id === person._id)"
+        >
+          <span v-if="selectedPerson && (selectedPerson._id === person._id)">Выбран</span>
+          <span v-else>Выбрать</span>
+        </v-btn>
+      </v-flex>
     </v-layout>
 
     <image-upload-croppa ref="croppaUpload" :person="person"></image-upload-croppa>
@@ -117,6 +127,9 @@ export default {
     person() {
       return this.$store.state.person;
     },
+    selectedPerson() {
+      return this.$store.state.selectedPerson;
+    },
     treeView: {
       get() {
         return this.$store.state.treeView;
@@ -133,6 +146,9 @@ export default {
         this.person._key
       );
       this.$store.state.relateDialog = true;
+    },
+    selectPerson() {
+      this.$store.state.selectedPerson = this.person;
     }
   }
 };

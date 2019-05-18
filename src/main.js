@@ -16,7 +16,8 @@ import RightDrawer from './components/RightDrawer.vue'
 import RelateDialogNew from './components/Person/RelateDialogNew.vue'
 import {
   gender,
-  rodName
+  rodName,
+  fullestName
 } from '@/filters'
 
 Vue.use(Croppa)
@@ -30,6 +31,7 @@ Vue.component('relate-dialog-new', RelateDialogNew)
 
 Vue.filter('rodName', rodName)
 Vue.filter('gender', gender)
+Vue.filter('fullestName', fullestName)
 
 // import '../node_modules/vuetify/src/stylus/app.styl'
 import './stylus/main.styl'

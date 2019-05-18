@@ -22,6 +22,7 @@ export const store = new Vuex.Store({
       parents: [],
       children: [],
     },
+    selectedPerson: null,
     relateDialog: false,
     rules: {
       required: (v) => !!v || 'Обязательное поле',

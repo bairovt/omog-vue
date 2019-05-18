@@ -36,7 +36,7 @@
 <script>
 // todo: wrong person key -> 404 message
 import axiosInst from "@/utils/axios-instance";
-import { predokRelation, potomokRelation, surName, keyFromId } from "@/filters";
+import { predokRelation, potomokRelation, fullName, keyFromId } from "@/filters";
 import router from "@/router";
 import { visOptions, menColor, womenColor } from "@/options/vis-opts";
 
@@ -103,8 +103,8 @@ export default {
           // добавляем без повторов
           treeData.nodes.push({
             id: item.person._id,
-            label: surName(item.person),
-            title: surName(item.person),
+            label: fullName(item.person),
+            title: fullName(item.person),
             shape: item.person.pic ? "circularImage" : "icon",
             image: item.person.pic
               ? "/upload/" + item.person._key + "/" + item.person.pic
@@ -137,8 +137,8 @@ export default {
           // добавляем без повторов
           treeData.nodes.push({
             id: item.person._id,
-            label: surName(item.person),
-            title: surName(item.person) + ", " + predokRelation(item),
+            label: fullName(item.person),
+            title: fullName(item.person) + ", " + predokRelation(item),
             shape: item.person.pic ? "circularImage" : "icon",
             image: item.person.pic
               ? "/upload/" + item.person._key + "/" + item.person.pic
@@ -168,8 +168,8 @@ export default {
       // a person
       treeData.nodes.push({
         id: this.person._id,
-        label: surName(this.person),
-        title: surName(this.person),
+        label: fullName(this.person),
+        title: fullName(this.person),
         shape: this.person.pic ? "circularImage" : "icon",
         image: this.person.pic
           ? "/upload/" + this.person._key + "/" + this.person.pic
@@ -191,9 +191,9 @@ export default {
           // добавляем без повторов
           treeData.nodes.push({
             id: item.person._id,
-            label: surName(item.person),
+            label: fullName(item.person),
             title:
-              surName(item.person) +
+              fullName(item.person) +
               ", " +
               (item.person.gender === 1 ? "брат" : "сестра"),
             shape: item.person.pic ? "circularImage" : "icon",
@@ -228,8 +228,8 @@ export default {
           // добавляем в treeData.nodes если person._id еще не добавлен
           treeData.nodes.push({
             id: item.person._id,
-            label: surName(item.person),
-            title: surName(item.person) + ", " + potomokRelation(item),
+            label: fullName(item.person),
+            title: fullName(item.person) + ", " + potomokRelation(item),
             shape: item.person.pic ? "circularImage" : "icon",
             image: item.person.pic
               ? "/upload/" + item.person._key + "/" + item.person.pic
@@ -272,8 +272,8 @@ export default {
             // добавляем без повторов
             pathData.nodes.push({
               id: person._id,
-              label: surName(person),
-              // title: surName(person) + ', ' + predokRelation(item),
+              label: fullName(person),
+              // title: fullName(person) + ', ' + predokRelation(item),
               shape: person.pic ? "circularImage" : "icon",
               image: person.pic
                 ? "/upload/" + person._key + "/" + person.pic
