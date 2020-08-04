@@ -103,7 +103,8 @@ export default {
           // добавляем без повторов
           treeData.nodes.push({
             id: item.person._id,
-            label: fullName(item.person),
+            // label: fullName(item.person),
+            label: item.person.name,
             title: fullName(item.person),
             shape: item.person.pic ? "circularImage" : "icon",
             image: item.person.pic
@@ -137,7 +138,8 @@ export default {
           // добавляем без повторов
           treeData.nodes.push({
             id: item.person._id,
-            label: fullName(item.person),
+            // label: fullName(item.person),
+            label: item.person.name,
             title: fullName(item.person) + ", " + predokRelation(item),
             shape: item.person.pic ? "circularImage" : "icon",
             image: item.person.pic
@@ -168,7 +170,8 @@ export default {
       // a person
       treeData.nodes.push({
         id: this.person._id,
-        label: fullName(this.person),
+        // label: fullName(this.person),
+        label: this.person.name,
         title: fullName(this.person),
         shape: this.person.pic ? "circularImage" : "icon",
         image: this.person.pic
@@ -191,7 +194,8 @@ export default {
           // добавляем без повторов
           treeData.nodes.push({
             id: item.person._id,
-            label: fullName(item.person),
+            // label: fullName(item.person),
+            label: item.person.name,
             title:
               fullName(item.person) +
               ", " +
@@ -228,7 +232,8 @@ export default {
           // добавляем в treeData.nodes если person._id еще не добавлен
           treeData.nodes.push({
             id: item.person._id,
-            label: fullName(item.person),
+            // label: fullName(item.person),
+            label: item.person.name,
             title: fullName(item.person) + ", " + potomokRelation(item),
             shape: item.person.pic ? "circularImage" : "icon",
             image: item.person.pic
