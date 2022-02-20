@@ -125,7 +125,7 @@
             :disabled="!!alertText"
           >Пригласить</v-btn>
           <v-spacer></v-spacer>
-          <v-btn @click.stop="inviteDialog=false">Отмена</v-btn>
+          <v-btn @click.stop="inviteDialog=false">Закрыть</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
