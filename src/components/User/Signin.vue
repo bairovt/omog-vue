@@ -37,7 +37,7 @@
             </span>-->
           </v-btn>
         </form>
-        <script async src="https://comments.app/js/widget.js?3" data-comments-app-website="PdCrr192" data-limit="15" data-page-id="omog.me" data-color="13B4C6" data-colorful="1"></script>
+        <script async src="https://comments.app/js/widget.js?3" data-comments-app-website="PdCrr192" data-limit="5" data-page-id="https://omog.me/signin"></script>
       </v-flex>
     </v-layout>
   </v-container>
