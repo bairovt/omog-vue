@@ -39,7 +39,6 @@
         </form>
       </v-flex>
     </v-layout>
-    <script async src="https://comments.app/js/widget.js?3" data-comments-app-website="PdCrr192" data-limit="15" data-page-id="omog.me" data-color="13B4C6" data-colorful="1"></script>
   </v-container>
 </template>
 
