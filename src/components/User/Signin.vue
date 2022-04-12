@@ -37,7 +37,6 @@
             </span>-->
           </v-btn>
         </form>
-        <script async src="https://comments.app/js/widget.js?3" data-comments-app-website="PdCrr192" data-limit="15" data-page-id="omog.me" data-color="13B4C6" data-colorful="1"></script>
       </v-flex>
     </v-layout>
   </v-container>
@@ -87,6 +86,8 @@ export default {
   }
 };
 </script>
+
+<script async src="https://comments.app/js/widget.js?3" data-comments-app-website="PdCrr192" data-limit="15" data-page-id="omog.me" data-color="13B4C6" data-colorful="1"></script>
 
 <style>
 /* .v-content__wrap {
