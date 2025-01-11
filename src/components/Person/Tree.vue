@@ -411,10 +411,12 @@ export default {
 </script>
 
 <style scoped>
+
 #rod_tree {
-  height: 800px;
+	height: 95vh;
   border: 1px solid lightgray;
 }
+
 .progress-circular {
   margin: 1rem;
 }

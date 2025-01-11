@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <!-- 
+    <!--
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
         <span>Vuetify</span>
         <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title> 
+      </v-toolbar-title>
     -->
     <!-- :disable-route-watcher="$vuetify.breakpoint.smAndUp" -->
     <v-navigation-drawer v-if="user" app fixed clipped v-model="drawer" temporary>
@@ -72,9 +72,9 @@
       <router-view/>
     </v-content>
 
-    <v-footer app class="hidden-xs-only">
+    <!-- <v-footer app class="hidden-xs-only">
       <span>&copy; 2018</span>
-    </v-footer>
+    </v-footer> -->
 
     <v-dialog v-model="errorDialog" max-width="500">
       <v-card v-if="error">
