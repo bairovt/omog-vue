@@ -10,7 +10,7 @@
           <person-fields :person="newPerson"></person-fields>
 
           <v-btn @click.stop="submitAddPerson" class="primary"
-					       :disabled="loading" :loading="loading"
+						:disabled="loading" :loading="loading"
           >
 						Добавить {{reltype | translate('v')}}
 					</v-btn>

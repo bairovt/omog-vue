@@ -3,11 +3,11 @@
     <v-layout>
       <v-flex xs12 sm6 offset-sm3>
         <h2>Создать персону</h2>
-        <br/>        
+        <br/>
         <v-form ref="createPersonForm" v-model="valid">
           <v-text-field
-  						name="_key" label="key (id)" type="text"
-  						v-model="newPerson._key">
+						name="_key" label="key (id)" type="text"
+						v-model="newPerson._key">
           </v-text-field>
 
           <v-radio-group v-model="newPerson.gender">
@@ -18,24 +18,24 @@
           <person-fields :person="newPerson"></person-fields>
 
           <v-switch label="Пользователь" v-model="isUser" color="primary"></v-switch>
-    		  <!-- optional user properties -->
-    		  <template v-if="isUser">
+					<!-- optional user properties -->
+					<template v-if="isUser">
             <v-text-field
 							type="email" name="email" label="e-mail"
 							v-model="userData.email" required
               :rules="[rules.required, rules.email]"
 						>
-  					</v-text-field>
-  					<v-text-field
+					</v-text-field>
+						<v-text-field
 							name="password"
 							label="пароль"
               v-model="userData.password"
 							type="password"
 							required>
-  					</v-text-field>
-    		  </template>
+						</v-text-field>
+					</template>
 
-          <v-btn @click.stop="submitCreatePerson" class="primary" :loading="loading"> <!-- :disabled="!valid" -->            
+          <v-btn @click.stop="submitCreatePerson" class="primary" :loading="loading"> <!-- :disabled="!valid" -->
 						Создать персону
 					</v-btn>
         </v-form>
@@ -54,7 +54,7 @@ export default {
       newPerson: {
         gender: 1
       },
-	    isUser: false,
+			isUser: false,
       userData: {},
       valid: true
     }
@@ -63,7 +63,7 @@ export default {
     loading () {return this.$store.state.loading},
     rules () {return this.$store.state.rules}
   },
-  methods: {    
+  methods: {
     submitCreatePerson: function () {
       if (this.$refs.createPersonForm.validate()) {
         axiosInst.post(`/api/person/create`, {
